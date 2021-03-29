@@ -1,0 +1,13 @@
+spring:
+  profiles:
+    active: dev
+  jackson:
+    default-property-inclusion: non-null
+logging:
+  level:
+    org:
+      springframework:
+        data:
+          mongodb:
+            repository:
+              query: DEBUG
