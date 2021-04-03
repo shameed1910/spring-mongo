@@ -5,7 +5,6 @@ services:
     container_name: "mymongodb"
     environment:
       MONGO_DATA_DIR: /data/db
-      MONGO_LOG_DIR: /dev/null
       MONGO_INITDB_DATABASE: product-db
     ports:
       - 27017:27017
@@ -16,8 +15,8 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    image: spring-webflux-mongodb:1.0
-    container_name: spring-webflux-mongodb
+    image: spring-mongodb:1.0
+    container_name: spring-mongodb
     ports:
       - 8080:8080
     links:
