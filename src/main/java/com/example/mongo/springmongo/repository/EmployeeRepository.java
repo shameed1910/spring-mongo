@@ -32,6 +32,11 @@ public interface EmployeeRepository extends MongoRepository<Employee,String> {
    @Query("{age : { $gt : ?0, $lt : ?1}}")
    List<Employee> findByEmployeesByAgeBetween(int ageGreaterThan, int ageLesserThan, Sort sort);
 
+   List<Employee> findByFirstnameOrderByLastname(String regex);
+
+   @Query("{ 'lastname' : {$ne : null}, 'department': ?0 }")
+   List<Employee> getUnsavedAge(String department);
+
 
 
 }
