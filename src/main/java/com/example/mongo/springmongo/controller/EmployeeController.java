@@ -44,6 +44,14 @@ public class EmployeeController {
     @GetMapping
     @ApiOperation("Get all the employees")
     public List<Employee> getAll(){
+        Employee employee=new Employee();
+        employee.setName("Tom");
+        Example<Employee> example1=Example.of(employee, ExampleMatcher.matchingAny());
+        Example<Employee> example2=Example.of(employee, ExampleMatcher.matching().withMatcher("name",exact())
+        .withMatcher("department",exact()));
+        Example<Employee> example3=Example.of(employee, ExampleMatcher.matchingAll().withStringMatcher(ExampleMatcher.StringMatcher.STARTING));
+        Example<Employee> example4=Example.of(employee, ExampleMatcher.matchingAll().withIncludeNullValues());
+
         return employeeService.getAll();
     }
 
