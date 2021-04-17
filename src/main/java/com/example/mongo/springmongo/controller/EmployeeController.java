@@ -51,6 +51,11 @@ public class EmployeeController {
         .withMatcher("department",exact()));
         Example<Employee> example3=Example.of(employee, ExampleMatcher.matchingAll().withStringMatcher(ExampleMatcher.StringMatcher.STARTING));
         Example<Employee> example4=Example.of(employee, ExampleMatcher.matchingAll().withIncludeNullValues());
+        
+        PageRequest firstPageRequest = PageRequest.of(0, 3); //0 is the page index whereas 3 is the size of each page
+        PageRequest secondPageRequest = PageRequest.of(0, 3, Sort.by("salary")); //returns sorted result by salary in ascending order
+        PageRequest thirdPageRequest = PageRequest.of(0, 3, Sort.Direction.DESC, "salary"); //returns sorted result by salary in descending order
+
 
         return employeeService.getAll();
     }
